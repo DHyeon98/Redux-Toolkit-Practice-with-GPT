@@ -5,6 +5,7 @@ import { add, minus, reset } from "../features/counter/counterSlice";
 export default function Counter() {
   const count = useSelector((state: RootState) => state.counter.value);
   const dispatch = useDispatch();
+  console.log(count);
   return (
     <div>
       <p>{count}</p>
