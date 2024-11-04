@@ -1,3 +1,16 @@
+// import { configureStore } from "@reduxjs/toolkit";
+// import counterReducer from "../features/counter/counterSlice";
+
+// const store = configureStore({
+//   reducer: {
+//     counter: counterReducer, // counter 상태 관리
+//   },
+// });
+
+// export type RootState = ReturnType<typeof store.getState>;
+// export type AppDispatch = typeof store.dispatch;
+// export default store;
+
 import { configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
@@ -32,6 +45,8 @@ const store = configureStore({
     }),
 });
 
+// Redux 스토어와 로컬 스토리지 사이의 동기화를 관리하는 역할
+// 애플리케이션 시작 시 저장된 상태를 로드하고, 상태가 변경될 때마다 이를 로컬 스토리지에 저장
 export const persistor = persistStore(store);
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
