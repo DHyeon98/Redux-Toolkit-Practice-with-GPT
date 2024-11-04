@@ -18,7 +18,11 @@ const counterSlice = createSlice({
       state.value += 1;
     },
     minus: (state) => {
-      state.value -= 1;
+      if (state.value === 0) {
+        return;
+      } else {
+        state.value -= 1;
+      }
     },
     reset: (state) => {
       state.value = 0;
