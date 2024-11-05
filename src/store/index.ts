@@ -63,3 +63,5 @@ export default store;
 // 애플리케이션 종료 또는 새로고침:
 // 로컬 스토리지에 저장된 상태는 새로고침 또는 브라우저 종료 후에도 유지됩니다.
 // 애플리케이션이 다시 로드될 때 persist/REHYDRATE 액션을 통해 로컬 스토리지의 상태가 Redux 스토어로 복원됩니다.
+
+// Redux Middleware, createAsyncThunk, RTK query 사용
