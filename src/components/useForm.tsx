@@ -3,32 +3,40 @@ import { useForm } from "react-hook-form";
 export default function RHFuseForm() {
   const {
     register,
-    formState: { defaultValues, errors },
+    formState: { errors },
     handleSubmit,
     watch,
+    getValues,
   } = useForm({
     mode: "onBlur",
-    defaultValues: {
-      input: "0",
-      numberInput: 0,
-    },
   });
 
-  const onSubmit = () => {
-    console.log(defaultValues, watch("input"), watch("numberInput"));
+  const onSubmit = (data: any) => {
+    // 출력 값
+    // {
+    //   name: {
+    //     firstName: [
+    //       { title: "value" }
+    //     ]
+    //   }
+    // }
+
+    console.log(data);
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input {...register("input", { required: "내용 입력" })} />
-
       <input
+        {...register("name.firstName.0.title", { required: "내용 입력" })}
+      />
+
+      {/* <input
         {...register("numberInput", {
           required: "내용 입력",
           // true로 설정하면 숫자로 변환하여 출력. 만약 문자를 입력하면 NaN으로 출력
           valueAsNumber: true,
         })}
-      />
-      {errors.input?.message}
+      /> */}
+      {/* {errors.name.firstName.0?.message} */}
       <button type="submit">제출</button>
     </form>
   );
@@ -48,6 +56,12 @@ export default function RHFuseForm() {
 // onChange 및 onBlur: 각 이벤트에 대한 커스텀 핸들러를 설정할 수 있습니다.
 // value: 필드의 초기값을 설정합니다.
 // shouldUnregister: true로 설정 시 컴포넌트가 언마운트될 때 필드가 폼에서 제거됩니다.
+
+// name마다 .을 쓰면 객체로 생성
+// Input Name	Submit Result
+// register("firstName")	{firstName: 'value'}
+// register("name.firstName")	{name: { firstName: 'value' }}
+// register("name.firstName.0")	{name: { firstName: [ 'value' ] }}
 
 // useForm
 // mode: 유효성 검사 방식 설정 (onSubmit, onChange, onBlur, onTouched).
