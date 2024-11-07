@@ -1,8 +1,9 @@
 import "./App.css";
-import Counter from "./components/counter";
+import RHFuseForm from "./components/useForm";
+// import Counter from "./components/counter";
 
 function App() {
-  return <Counter />;
+  return <RHFuseForm />;
 }
 
 export default App;
